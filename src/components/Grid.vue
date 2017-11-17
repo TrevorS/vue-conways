@@ -5,6 +5,7 @@
       <button v-on:click="stop">Stop</button>
       <button v-on:click="tick">Tick</button>
       <button v-on:click="clear">Clear</button>
+      <button v-on:click="random">Random</button>
     </div>
     <div v-for="(r, y) in cells" :key="`row-${y}`" class="row">
       <cell v-for="(c, x) in r" :key="`cell-${x}`" :value="c" :x="x" :y="y"/>
@@ -36,6 +37,9 @@ const Grid = {
     },
     clear: function clear() {
       this.$store.commit('clear');
+    },
+    random: function random() {
+      this.$store.commit('random');
     },
   },
 };

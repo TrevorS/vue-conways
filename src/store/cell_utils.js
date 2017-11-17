@@ -1,11 +1,17 @@
-const generateCells = (height, width) => {
+const generateCells = (height, width, random) => {
   const newArray = [];
 
   for (let i = 0; i < height; i += 1) {
     const row = [];
 
     for (let j = 0; j < width; j += 1) {
-      row.push(0);
+      if (random) {
+        const randomValue = Math.round(Math.random());
+
+        row.push(randomValue);
+      } else {
+        row.push(0);
+      }
     }
 
     newArray.push(row);

@@ -14,7 +14,7 @@ const WIDTH = 64;
 
 const store = new Vuex.Store({
   state: {
-    cells: generateCells(HEIGHT, WIDTH),
+    cells: generateCells(HEIGHT, WIDTH, false),
   },
   mutations: {
     tick(state) {
@@ -31,6 +31,11 @@ const store = new Vuex.Store({
     },
     clear(state) {
       const newCells = generateCells(HEIGHT, WIDTH);
+
+      state.cells = newCells;
+    },
+    random(state) {
+      const newCells = generateCells(HEIGHT, WIDTH, true);
 
       state.cells = newCells;
     },

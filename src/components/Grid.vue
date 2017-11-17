@@ -1,5 +1,11 @@
 <template>
   <div class="grid">
+    <div class="controls">
+      <button v-on:click="start">Start</button>
+      <button v-on:click="stop">Stop</button>
+      <button v-on:click="tick">Tick</button>
+      <button v-on:click="clear">Clear</button>
+    </div>
     <div v-for="(r, y) in cells" :key="`row-${y}`" class="row">
       <cell v-for="(c, x) in r" :key="`cell-${x}`" :value="c" :x="x" :y="y"/>
     </div>
@@ -18,10 +24,27 @@ const Grid = {
   components: {
     Cell,
   },
+  methods: {
+    start: function start() {
+      this.timeoutId = window.setInterval(this.tick, 500);
+    },
+    stop: function stop() {
+      clearTimeout(this.timeoutId);
+    },
+    tick: function tick() {
+      this.$store.commit('tick');
+    },
+    clear: function clear() {
+      this.$store.commit('clear');
+    },
+  },
 };
 
 export default Grid;
 </script>
 
 <style scoped>
+.row {
+  height: 10px;
+}
 </style>

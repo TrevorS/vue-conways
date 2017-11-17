@@ -29,6 +29,11 @@ const store = new Vuex.Store({
 
       state.cells = newCells;
     },
+    clear(state) {
+      const newCells = generateCells(HEIGHT, WIDTH);
+
+      state.cells = newCells;
+    },
   },
 });
 

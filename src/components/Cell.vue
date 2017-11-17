@@ -1,15 +1,29 @@
 <template>
-  <div class="cell" v-bind:class="{ alive: isAlive }">
+  <div
+    class="cell"
+    :class="{ alive: isAlive }"
+    v-on:click="toggle">
   </div>
 </template>
 
 <script>
 const Cell = {
   name: 'Cell',
-  props: ['value'],
+  props: [
+    'value',
+    'x',
+    'y',
+  ],
   computed: {
     isAlive: function isAlive() {
       return this.value === 1;
+    },
+  },
+  methods: {
+    toggle: function toggle() {
+      const { x, y } = this;
+
+      this.$store.commit('toggle', { x, y });
     },
   },
 };

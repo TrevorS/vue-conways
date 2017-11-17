@@ -1,7 +1,7 @@
 <template>
   <div class="grid">
-    <div v-for="(r, i) in cells" :key="`row-${i}`" class="row">
-      <cell v-for="(c, j) in r" :key="`cell-${j}`" :value="c"/>
+    <div v-for="(r, y) in cells" :key="`row-${y}`" class="row">
+      <cell v-for="(c, x) in r" :key="`cell-${x}`" :value="c" :x="x" :y="y"/>
     </div>
   </div>
 </template>

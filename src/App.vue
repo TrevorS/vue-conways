@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>App here!</h1>
+    <h1>Conway's Game of Life</h1>
     <Grid/>
   </div>
 </template>

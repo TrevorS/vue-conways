@@ -20,4 +20,16 @@ const executeTick = (oldCells) => {
   return newCells;
 };
 
-export { generateCells, executeTick };
+const toggleCell = (oldCells, x, y) => {
+  const newCells = [...oldCells];
+
+  const currentValue = oldCells[y][x];
+
+  const newValue = currentValue === 1 ? 0 : 1;
+
+  newCells[y][x] = newValue;
+
+  return newCells;
+};
+
+export { generateCells, executeTick, toggleCell };

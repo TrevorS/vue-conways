@@ -6,7 +6,12 @@
       <button v-on:click="tick">Tick</button>
       <button v-on:click="clear">Clear</button>
       <button v-on:click="random">Random</button>
+
+      <span class="iterations">
+        {{ iterations }} iterations
+      </span>
     </div>
+
     <div v-for="(r, y) in cells" :key="`row-${y}`" class="row">
       <cell v-for="(c, x) in r" :key="`cell-${x}`" :value="c" :x="x" :y="y"/>
     </div>
@@ -21,6 +26,7 @@ const Grid = {
   name: 'Grid',
   computed: mapState([
     'cells',
+    'iterations',
   ]),
   components: {
     Cell,
@@ -48,6 +54,14 @@ export default Grid;
 </script>
 
 <style scoped>
+.controls {
+  padding: 10px 0 25px 0;
+}
+
+.iterations {
+  padding-left: 25px;
+}
+
 .row {
   height: 10px;
 }

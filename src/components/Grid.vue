@@ -1,11 +1,11 @@
 <template>
   <div class="grid">
     <div class="controls">
-      <button v-on:click="start">Start</button>
-      <button v-on:click="stop">Stop</button>
-      <button v-on:click="tick">Tick</button>
-      <button v-on:click="clear">Clear</button>
-      <button v-on:click="random">Random</button>
+      <button @click="start" :disabled="running">Start</button>
+      <button @click="stop" :disabled="stopped">Stop</button>
+      <button @click="tick" :disabled="running">Tick</button>
+      <button @click="clear" :disabled="running">Clear</button>
+      <button @click="random" :disabled="running">Random</button>
 
       <span class="iterations">
         {{ iterations }} iterations
@@ -24,10 +24,21 @@ import Cell from './Cell';
 
 const Grid = {
   name: 'Grid',
-  computed: mapState([
-    'cells',
-    'iterations',
-  ]),
+  data: () => ({
+    timeoutId: null,
+  }),
+  computed: {
+    stopped: function stopped() {
+      return this.timeoutId === null;
+    },
+    running: function running() {
+      return !this.stopped;
+    },
+    ...mapState([
+      'cells',
+      'iterations',
+    ]),
+  },
   components: {
     Cell,
   },
@@ -37,6 +48,8 @@ const Grid = {
     },
     stop: function stop() {
       clearTimeout(this.timeoutId);
+
+      this.timeoutId = null;
     },
     tick: function tick() {
       this.$store.commit('tick');

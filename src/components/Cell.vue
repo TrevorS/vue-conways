@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import { TOGGLE } from '../store/mutation_types';
+
 const Cell = {
   name: 'Cell',
   props: [
@@ -23,7 +25,7 @@ const Cell = {
     toggle: function toggle() {
       const { x, y } = this;
 
-      this.$store.commit('toggle', { x, y });
+      this.$store.commit(TOGGLE, { x, y });
     },
   },
 };

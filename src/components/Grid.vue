@@ -20,6 +20,13 @@
 
 <script>
 import { mapState } from 'vuex';
+
+import {
+  TICK,
+  CLEAR,
+  RANDOM,
+} from '../store/mutation_types';
+
 import Cell from './Cell';
 
 const Grid = {
@@ -52,13 +59,13 @@ const Grid = {
       this.timeoutId = null;
     },
     tick: function tick() {
-      this.$store.commit('tick');
+      this.$store.commit(TICK);
     },
     clear: function clear() {
-      this.$store.commit('clear');
+      this.$store.commit(CLEAR);
     },
     random: function random() {
-      this.$store.commit('random');
+      this.$store.commit(RANDOM);
     },
   },
 };
